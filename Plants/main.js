@@ -1059,7 +1059,7 @@ window.onload = function () {
         plant2.spawnCount = this.spawnCount + randomSign() * chaosCalc / 10 + plant2.growStr * Math.random() / 10;
         plant2.spawnCost = this.spawnCost + randomSign() * chaosCalc + plant2.growStr * Math.random() / 2;
         plant2.chaosResist = Math.abs(this.chaosResist + chaosCalc * Math.random() / 10 + plant2.depthReach * Math.random() / 10);
-        plant2.chaos = this.chaos + randomSign() * chaosCalc / 10 + plant2.consumptionRate * Math.random() / 10 + plant2.dirt.chaos * Math.random() / 10;
+        plant2.chaos = this.chaos + (randomSign() * chaosCalc / 10 + plant2.consumptionRate * Math.random() / 10 + plant2.dirt.chaos * Math.random() / 10)/10;
         if (plant2.spawnCount > 8 || plant2.spawnCount <= 0) { plant2.spawnCount = Math.ceil(Math.abs(plant2.spawnCount / 2)); plant2.chaos++; }
 
         plant2.color['R'] = this.color['R'] + (randomSign() * chaosCalc * 2 + plant2.growStr)/1;
