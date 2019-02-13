@@ -1311,6 +1311,7 @@ window.onload = function () {
     window.onmousedown = GE.onClick;
 
     /* #region Instructions */
+    console.clear();
     console.log(instruct);
     console.log("Game is currently paused");
     CONTEXT.font = "30px Georgia"
