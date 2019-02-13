@@ -701,6 +701,9 @@ window.onload = function () {
         this.totalTicks = 0;
         this.unitArr = [[/*dirt*/], [/*water*/], [/*plants*/], [/*key manager*/]];
         this.keyMan = {};
+        this.rainTime = 3000;
+        this.rainAmount = 70; //240 * this number
+        this.raining = false;
     }
     GameEngine.prototype.updateAll = function () {
         if ((this.totalTicks % currentGameSpeed === 0) && displayTime) {
@@ -731,22 +734,33 @@ window.onload = function () {
                 console.log(currentMap[0][lastPlant.mapPos.y][lastPlant.mapPos.x][0])
             }
         }
-        if (this.totalTicks < 140 || true) {
-            this.totalTicks++;
-            CONTEXT.fillStyle = "grey";
-            CONTEXT.fillRect(mapOffsetX, 0, 650, 700 - mapIncrementY - mapOffsetY);
-            let a;
-            for (a in this.unitArr) {
-                for (b in this.unitArr[a]) {
-                    if (!(this.unitArr[a][b] === null) && typeof this.unitArr[a][b] === 'object' && typeof this.unitArr[a][b].update !== 'undefined') {
-                        this.unitArr[a][b].update();
-                        if (!(this.unitArr[a][b] === null) && typeof this.unitArr[a][b] === 'object' && typeof this.unitArr[a][b].draw !== 'undefined') {
-                            this.unitArr[a][b].draw();
-                        }
+        
+        this.totalTicks++;
+        CONTEXT.fillStyle = "grey";
+        CONTEXT.fillRect(mapOffsetX, 0, 650, 700 - mapIncrementY - mapOffsetY);
+        if (this.totalTicks % this.rainTime === 0 || this.raining){
+            this.raining = true;
+            for (c in this.unitArr[gePlacement.dirt]){
+                if (typeof this.unitArr[gePlacement.dirt][c].resourceTotal !== 'undefined'){
+                    this.unitArr[gePlacement.dirt][c].chaos += randomSign()/100;
+                    this.unitArr[gePlacement.dirt][c].resourceTotal += this.rainAmount * (this.unitArr[gePlacement.dirt][c].chaos) * Math.random();
+                }
+                
+            }
+        }
+        if ((this.totalTicks - 240) % this.rainTime === 0){this.raining = false;}
+        let a;
+        for (a in this.unitArr) {
+            for (b in this.unitArr[a]) {
+                if (!(this.unitArr[a][b] === null) && typeof this.unitArr[a][b] === 'object' && typeof this.unitArr[a][b].update !== 'undefined') {
+                    this.unitArr[a][b].update();
+                    if (!(this.unitArr[a][b] === null) && typeof this.unitArr[a][b] === 'object' && typeof this.unitArr[a][b].draw !== 'undefined') {
+                        this.unitArr[a][b].draw();
                     }
                 }
             }
         }
+        
     }
     GameEngine.prototype.keyDown = function (key) {
         //console.log("Key Pressed: " + key.which);
@@ -1152,6 +1166,7 @@ window.onload = function () {
     }
     Dirt.prototype.draw = function () {
         let alph = this.resourceTotal/(17000*2);
+        alph = 1 - Math.pow(2.71, (-alph));
         if (alph > 1){alph = 1;}
         CONTEXT.fillStyle = "rgba(139, 69, 19, " + alph + ")";
         CONTEXT.fillRect(mapOffsetX + mapIncrementX * this.mapPos.x, mapOffsetY + mapIncrementY * (this.mapPos.y - 1),mapIncrementX,mapIncrementY);
@@ -1266,7 +1281,7 @@ window.onload = function () {
     plantBaseType.color['B'] = 0;
     const dirtBaseType = new Dirt();
     dirtBaseType.naturalShade = 1;
-    dirtBaseType.resourceTotal = 17000;
+    dirtBaseType.resourceTotal = 17000*1.5;
     dirtBaseType.resourceDepth = 3;
     dirtBaseType.growDifficulty = 2;
     dirtBaseType.chaos = 4;
