@@ -29,7 +29,7 @@ window.onload = function () {
     var lastPlant;
     var gameRunning = true;
     var gamePause = true;
-    var instruct = "Some helpful instructions\n\'i\' for all plants info(fat)\nOnce all plants die the final plant alive will display it's info\n\'h\' will reprint these instructions\nnumbers to control game speed\n\'spacebar\' will toggle pause\nArrow keys are for manual control\n\'r\' will restart the current map\n\'t\' to toggle the tock display\n\'d\' to displaya current game tocks\nnumpad keys to change stage\n\'c\' to clear the console\nLeft click on spaces to see the object informations";
+    var instruct = "Some helpful instructions\n\'i\' for all plants info(fat)\nOnce all plants die the final plant alive will display it's info\n\'h\' will reprint these instructions\nnumbers to control game speed\n\'spacebar\' will toggle pause\nArrow keys are for manual control\n\'r\' will restart the current map\n\'t\' to toggle the tock display\n\'d\' to displaya current game tocks\nnumpad keys to change stage\n\'c\' to clear the console\nLeft click on spaces to see the object information.\n\'n\' will load a new map based on step increment (1-10) (arrow keys)";
     var stepIncrement = 1;
     var currentMap;
     const mapHeight = 13;
@@ -818,6 +818,9 @@ window.onload = function () {
                     }
                 }
                 console.log(anArr);
+                break;
+            case 78:
+                selectMap(stepIncrement%10);
                 break;
         }
     }
