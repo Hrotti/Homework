@@ -1334,7 +1334,7 @@ window.onload = function () {
     console.log("Game is currently paused");
     CONTEXT.font = "30px Georgia"
     CONTEXT.fillStyle = "rgba(255, 248, 220, 1)"
-    CONTEXT.fillText("Info will go here",720,100);
+    CONTEXT.fillText("Press Spacebar",720,100);
     /* #endregion */
     /* #region Ticks */
     ClockTicks();
