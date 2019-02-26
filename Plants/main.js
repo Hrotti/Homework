@@ -28,7 +28,7 @@ window.onload = function () {
     var displayTime = false;
     var lastPlant;
     var gameRunning = true;
-    var gamePause = true;
+    var gamePause = false;
     var instruct = "Some helpful instructions\n\'i\' for all plants info(fat)\nOnce all plants die the final plant alive will display it's info\n\'h\' will reprint these instructions\nnumbers to control game speed\n\'spacebar\' will toggle pause\nArrow keys are for manual control\n\'r\' will restart the current map\n\'t\' to toggle the tock display\n\'d\' to displaya current game tocks\nnumpad keys to change stage\n\'c\' to clear the console\nLeft click on spaces to see the object information.\n\'n\' will load a new map based on step increment (1-10) (arrow keys)";
     var stepIncrement = 1;
     var currentMap;
@@ -1331,11 +1331,32 @@ window.onload = function () {
     /* #region Instructions */
     console.clear();
     console.log(instruct);
-    console.log("Game is currently paused");
-    CONTEXT.font = "30px Georgia"
+    //console.log("Game is currently paused");
+    //var instruct = "Some helpful instructions\n
+    //\'i\' for all plants info(fat)\n
+    //Once all plants die the final plant alive will display it's info\n
+    //\'h\' will reprint these instructions\n
+    //numbers to control game speed\n
+    //\'spacebar\' will toggle pause\n
+    //Arrow keys are for manual control\n
+    //\'r\' will restart the current map\n
+    //\'t\' to toggle the tock display\n
+    //\'d\' to displaya current game tocks\n
+    //numpad keys to change stage\n
+    //\'c\' to clear the console\n
+    //Left click on spaces to see the object information.\n
+    //\'n\' will load a new map based on step increment (1-10) (arrow keys)";
+    CONTEXT.font = "26px Georgia"
     CONTEXT.fillStyle = "rgba(255, 248, 220, 1)"
-    CONTEXT.fillText("Press Spacebar",720,100);
-    CONTEXT.fillText("And maybe 6",720,200);
+    CONTEXT.fillText("Numbers control game speed",720,50);
+    CONTEXT.fillText("Spacebar toggles pause",720,100);
+    CONTEXT.fillText("\'r\' will restart current map",720,150);
+    CONTEXT.fillText("Numpad to change map",720,200);
+    CONTEXT.fillText("If there is no numpad then",720,250);
+    CONTEXT.fillText("use arrow key up and down to increment",720,300);
+    CONTEXT.fillText("a counter to be used to select a map",720,350);
+    CONTEXT.fillText("Example: (default) 1 ^ ^ ^ = 4 -> map[4]",720,400);
+    CONTEXT.fillText("Example: (Selected) 5 v v = 3 -> map[3]",720,450);
     /* #endregion */
     /* #region Ticks */
     ClockTicks();
