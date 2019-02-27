@@ -1346,17 +1346,17 @@ window.onload = function () {
     //\'c\' to clear the console\n
     //Left click on spaces to see the object information.\n
     //\'n\' will load a new map based on step increment (1-10) (arrow keys)";
-    CONTEXT.font = "26px Georgia"
+    CONTEXT.font = "22px Georgia"
     CONTEXT.fillStyle = "rgba(255, 248, 220, 1)"
-    CONTEXT.fillText("Numbers control game speed",720,50);
-    CONTEXT.fillText("Spacebar toggles pause",720,100);
-    CONTEXT.fillText("\'r\' will restart current map",720,150);
-    CONTEXT.fillText("Numpad to change map",720,200);
-    CONTEXT.fillText("If there is no numpad then",720,250);
-    CONTEXT.fillText("use arrow key up and down to increment",720,300);
-    CONTEXT.fillText("a counter to be used to select a map",720,350);
-    CONTEXT.fillText("Example: (default) 1 ^ ^ ^ = 4 -> map[4]",720,400);
-    CONTEXT.fillText("Example: (Selected) 5 v v = 3 -> map[3]",720,450);
+    CONTEXT.fillText("Numbers control game speed",690,50);
+    CONTEXT.fillText("Spacebar toggles pause",690,100);
+    CONTEXT.fillText("\'r\' will restart current map",690,150);
+    CONTEXT.fillText("Numpad to change map",690,200);
+    CONTEXT.fillText("If there is no numpad then",690,250);
+    CONTEXT.fillText("use arrow key up and down to increment",690,300);
+    CONTEXT.fillText("a counter to be used to select a map",690,350);
+    CONTEXT.fillText("Example: (default) 1 ^ ^ ^ = 4 -> map[4]",690,400);
+    CONTEXT.fillText("Example: (Selected) 5 v v = 3 -> map[3]",690,450);
     /* #endregion */
     /* #region Ticks */
     ClockTicks();
