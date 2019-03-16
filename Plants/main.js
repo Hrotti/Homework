@@ -1584,6 +1584,8 @@ window.onload = function () {
     CONTEXT.fillText("a counter to be used to select a map", 690, 350);
     CONTEXT.fillText("Example: (default) 1 ^ ^ ^ = 4 -> map[4]", 690, 400);
     CONTEXT.fillText("Example: (Selected) 5 v v = 3 -> map[3]", 690, 450);
+    CONTEXT.fillText("\'s\' to save the current state", 690, 500);
+    CONTEXT.fillText("\'l\' to load the saved state", 690, 550);
     /* #endregion */
     /* #region Ticks */
     ClockTicks();
